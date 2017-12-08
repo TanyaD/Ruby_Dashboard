@@ -1,0 +1,37 @@
+<h1>Listing 4 Dojos</h1>
+
+<table>
+
+    <tr>
+        <th>branch</th>
+        <th>street</th>
+        <th>city </th>
+        <th>state </th>
+        <th>Actions</th>
+    </tr>
+    <% @dojos.each do |d|%>
+    <tr>
+
+        <td><%= d.branch %></td>
+        <td><%= d.street %></td>
+        <td><%= d.city %></td>
+        <td><%= d.state %></td>
+        <td>
+            <a href="dojos/<%= d.id %>">Show</a>
+            <a href="dojos/<%= d.id %>/edit">Edit</a>
+
+        <form action="/dojos/<%= d.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <input type="submit" value="delete">
+        </form>
+        </td>
+
+    </tr>
+    <%end%>
+
+</table>
+
+<a href="/dojos/new">New Dojo</a>
+
+
